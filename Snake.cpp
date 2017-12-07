@@ -53,7 +53,10 @@ void Snake::update_position(int dx, int dy) {
 	y_ += dy;
 }
 
+RandomNumberGenerator Snake::rng_;
+
 void Snake::position_at_random() {
 	x_ = rng_.get_random_value(SIZE);        //WARNING: may fall on mouse
 	y_ = rng_.get_random_value(SIZE);
+
 }

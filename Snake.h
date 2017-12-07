@@ -21,7 +21,7 @@ public:
 	char symbol_;
 	int x_, y_;
 	Mouse* p_mouse_;
-	RandomNumberGenerator rng_;
+	static RandomNumberGenerator rng_;
 
 private:
 
