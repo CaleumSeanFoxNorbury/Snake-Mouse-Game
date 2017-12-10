@@ -9,17 +9,17 @@
 #include "Snake.h"
 #include "Underground.h"
 #include "UserInterface.h"
-
+#include "Nut.h"
 
 class Game
 {
 public:
-	
+	Game();
 	Mouse mouse_;
 	Snake snake_;
 	Underground underground_;
 	UserInterface* p_ui;
-
+	Nut _nut;
 	void set_up(UserInterface* pui);
 	void run();
 	bool is_arrow_key_code(int keycode);

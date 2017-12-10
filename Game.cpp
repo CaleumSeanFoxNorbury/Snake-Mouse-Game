@@ -1,6 +1,8 @@
 #include "Game.h"
 
 
+Game::Game() {}
+
 void Game::set_up(UserInterface* pui) {
 	//prepare game
 	//set up the holes
@@ -13,6 +15,8 @@ void Game::set_up(UserInterface* pui) {
 	snake_.spot_mouse(&mouse_);
 	//set up the UserInterface
 	p_ui = pui;
+
+	_nut = Nut(8, 9);
 }
 
 void Game::run() {
@@ -46,6 +50,8 @@ string Game::prepare_grid() {
 					os << mouse_.get_symbol();	//show mouse
 				else
 				{
+					if ((row == _nut.get_y() && col == _nut.get_x()) && !_nut.has_been_collected())
+						os << _nut.get_symbol();
 					const int hole_no(find_hole_number_at_position(col, row));
 					if (hole_no != -1)
 						os << underground_.get_hole_no(hole_no).get_symbol();	//show hole
@@ -71,8 +77,15 @@ void Game::apply_rules() {
 	if (snake_.has_caught_mouse())
 		mouse_.die();
 	else
-		if (mouse_.has_reached_a_hole(underground_))
+	{
+		if (mouse_.is_at_position(_nut.get_x(), _nut.get_y()))
+		{
+			_nut.disappears();
+		}
+		if (mouse_.has_reached_a_hole(underground_) && _nut.has_been_collected())
 			mouse_.escape_into_hole();
+
+	}
 }
 bool Game::has_ended(char key) {
 	return ((key == 'Q') || (!mouse_.is_alive()) || (mouse_.has_escaped()));

@@ -9,20 +9,11 @@
 
 Snake::Snake() {
 	symbol_ = SNAKEHEAD;
-	_tail = {
-		new TailItem(),
-		new TailItem(),
-		new TailItem()
-	};
 	position_at_random();
 	p_mouse_ = nullptr; //to make the pointer is safe before the snake spots the mouse
 }
 Snake::~Snake()
 {}
-
-void Snake::move_tail() {
-
-}
 
 bool Snake::is_at_position(int x, int y) {
 	return (x_ == x) && (y_ == y);
