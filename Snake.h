@@ -6,6 +6,8 @@
 #include "Mouse.h"
 #include "RandomNumberGenerator.h"
 #include"constants.h"
+#include <vector>
+#include "TailItem.h"
 
 class Snake {
 	public:
@@ -18,10 +20,14 @@ class Snake {
 		void set_direction(int& dx, int& dy);
 		void position_at_random();
 		void update_position(int dx, int dy);
+		void move_tail();
 		char symbol_;
 		int x_, y_;
 		Mouse* p_mouse_;
 		RandomNumberGenerator rng_;
+
+private:
+	vector<TailItem> _tail;
 };
 
 #endif // !defined(SnakeH)

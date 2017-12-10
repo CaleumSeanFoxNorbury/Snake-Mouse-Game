@@ -12,7 +12,6 @@ using namespace std;
 #include "Underground.h"
 #include "UserInterface.h"
 
-
 //using OO approach
 //---------------------------------
 UserInterface ui;
