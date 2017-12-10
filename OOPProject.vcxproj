@@ -22,6 +22,8 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Hole.cpp" />
     <ClCompile Include="Nut.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Score.cpp" />
     <ClCompile Include="UserInterface.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
@@ -34,6 +36,8 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Hole.h" />
     <ClInclude Include="Nut.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Score.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="UserInterface.h" />
     <ClInclude Include="Mouse.h" />

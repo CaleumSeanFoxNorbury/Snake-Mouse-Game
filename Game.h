@@ -10,6 +10,7 @@
 #include "Underground.h"
 #include "UserInterface.h"
 #include "Nut.h"
+#include "Player.h"
 
 class Game
 {
@@ -27,7 +28,7 @@ public:
 	bool has_ended(char key);
 
 private:
-
+	Player _player;
 	string prepare_grid();
 	int key_;
 	void apply_rules();
