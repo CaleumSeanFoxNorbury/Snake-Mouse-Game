@@ -35,3 +35,8 @@ void Nut::disappears()
 {
 	_collected = true;
 }
+
+void Nut::reappears()
+{
+	_collected = false;
+}

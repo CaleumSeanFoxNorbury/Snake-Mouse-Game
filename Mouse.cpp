@@ -44,13 +44,16 @@ bool Mouse::has_reached_a_hole(Underground ug) {
 	}
 	return false;
 }
-void Mouse::die() {
+void Mouse::die()
+{
 	alive_ = false;
 }
 void Mouse::escape_into_hole() 
 {
 	escaped_ = true;
 }
+
+
 void Mouse::scamper(char k) { //move mouse in required direction
   //pre: Key is an arrow representing the direction in which the mouse moves
 	//find direction indicated by key
@@ -79,6 +82,13 @@ void Mouse::scamper(char k) { //move mouse in required direction
 	{
 		update_position(mouse_dx_, mouse_dy_);		//go in that direction
 	}
+}
+
+void Mouse::reset()
+{
+	alive_ = true;
+	escaped_ = false;
+	position_in_middle_of_grid();
 }
 
 //////////////////////////////////////////////////////////////////////

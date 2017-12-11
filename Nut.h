@@ -12,6 +12,7 @@ public:
 	bool has_been_collected() const;
 	bool is_at_position(const int, const int) const;
 	void disappears();
+	void reappears();
 private:
 	int _x, _y;
 	char _symbol;

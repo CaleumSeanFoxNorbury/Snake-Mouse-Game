@@ -19,6 +19,13 @@ void Game::set_up(UserInterface* pui) {
 	_nut = Nut(8, 9);
 }
 
+void Game::reset()
+{
+	snake_.position_at_random();
+	_nut.reappears();
+	mouse_.reset();
+}
+
 void Game::run() {
 	assert(p_ui != nullptr);
 
@@ -34,6 +41,8 @@ void Game::run() {
 	do
 	{
 		p_ui->draw_grid_on_screen(prepare_grid());
+		cout << "Player: " << _player.get_name() << endl;
+		cout << "Score: " << _player.get_score_amount() << endl;
 		key_ = p_ui->get_keypress_from_user();
 		while (!has_ended(key_))
 		{
@@ -56,9 +65,13 @@ void Game::run() {
 		cout << endl << "Do you wish to continue? (Y/N): ";
 		cin >> carryOn;
 
+		if (tolower(carryOn) == 'y')
+		{
+			reset();
+		}
 		//TODO: Reset state of game
 
-	} while (tolower(carryOn) != 'n');
+	} while (tolower(carryOn) == 'y');
 
 }
 string Game::prepare_grid() {

@@ -22,6 +22,7 @@ public:
 	UserInterface* p_ui;
 	Nut _nut;
 	void set_up(UserInterface* pui);
+	void reset();
 	void run();
 	bool is_arrow_key_code(int keycode);
 	int find_hole_number_at_position(int x, int y);
