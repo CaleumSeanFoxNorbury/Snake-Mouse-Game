@@ -24,6 +24,7 @@
     <ClCompile Include="Nut.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="Tail_Item.cpp" />
     <ClCompile Include="UserInterface.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="Tail_Item.h" />
     <ClInclude Include="UserInterface.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
@@ -48,7 +50,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{52EB9372-9E3D-4C78-9BD1-F99C66F17353}</ProjectGuid>
     <RootNamespace>OOPProject</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

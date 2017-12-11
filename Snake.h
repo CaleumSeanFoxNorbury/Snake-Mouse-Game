@@ -6,6 +6,7 @@
 #include "Mouse.h"
 #include "RandomNumberGenerator.h"
 #include"constants.h"
+#include "Tail_Item.h"
 
 class Snake {
 public:
@@ -19,6 +20,10 @@ public:
 	void position_at_random();
 	void update_position(int dx, int dy);
 	char symbol_;
+	void move_tail();
+	vector <Tail_Item> tail_;
+
+	
 	int x_, y_;
 	Mouse* p_mouse_;
 	static RandomNumberGenerator rng_;
@@ -26,6 +31,7 @@ public:
 private:
 
 	bool is_at_position(int x, int y);
+	char tail_symbol;
 
 };
 

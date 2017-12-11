@@ -25,6 +25,7 @@ using namespace std;
 
 
 class Underground {
+
 public:
 	Underground();
 	Hole get_hole_no(int no) const;

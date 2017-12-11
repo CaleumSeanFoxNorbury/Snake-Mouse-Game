@@ -51,6 +51,7 @@ void Game::run() {
 			{
 				mouse_.scamper(key_);
 				snake_.chase_mouse();
+				snake_.move_tail();
 				p_ui->draw_grid_on_screen(prepare_grid());
 				cout << "Player: " << _player.get_name() << endl;
 				cout << "Score: " << _player.get_score_amount() << endl;
@@ -77,24 +78,38 @@ void Game::run() {
 string Game::prepare_grid() {
 	//prepare a string that holds the grid information
 	ostringstream os;
-	for (int row(1); row <= SIZE; ++row)	//for each row (vertically)
+	for (int row(1); row <= SIZE; ++row)		//for each row (vertically)
 	{
 		for (int col(1); col <= SIZE; ++col)	//for each column (horizontally)
 		{
+			
 			if ((row == snake_.y_) && (col == snake_.x_))
-				os << snake_.symbol_;	//show snake
-			else
-				if ((row == mouse_.get_y()) && (col == mouse_.get_x()))
-					os << mouse_.get_symbol();	//show mouse
+				os << snake_.symbol_;			//show snake
 				else
 				{
-					if ((row == _nut.get_y() && col == _nut.get_x()) && !_nut.has_been_collected())
-						os << _nut.get_symbol();
-					const int hole_no(find_hole_number_at_position(col, row));
-					if (hole_no != -1)
-						os << underground_.get_hole_no(hole_no).get_symbol();	//show hole
-					else
-						os << FREECELL;	//show free grid cell
+					if ((row == snake_.tail_.at(0).y_) && (col == snake_.tail_.at(0).x_))
+					{
+						os << snake_.tail_.at(0).get_symbol();
+					}
+					else {
+						if ((row == mouse_.y_) && (col == mouse_.x_))
+						{
+							os << mouse_.symbol_;
+						}
+						else
+						{
+							if ((row == _nut.get_y() && col == _nut.get_x()) && !_nut.has_been_collected())
+								os << _nut.get_symbol();
+							else
+							{
+								const int hole_no(find_hole_number_at_position(col, row));
+								if (hole_no != -1)
+									os << underground_.get_hole_no(hole_no).get_symbol();	//show hole
+								else
+									os << FREECELL;	//show free grid cell
+							}
+						}
+					}
 				}
 		} //end of col-loop
 		os << endl;

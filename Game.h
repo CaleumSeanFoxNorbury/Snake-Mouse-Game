@@ -11,6 +11,7 @@
 #include "UserInterface.h"
 #include "Nut.h"
 #include "Player.h"
+#include "Tail_Item.h"
 
 class Game
 {
