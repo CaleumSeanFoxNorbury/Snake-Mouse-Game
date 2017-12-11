@@ -7,11 +7,11 @@
 #include "Snake.h"
 #include"Tail_Item.h"
 static const int Maxtails(3);
-Snake::Snake(): tail_(Maxtails) {
+Snake::Snake(): tail_(3) {
 	symbol_ = SNAKEHEAD;
 	position_at_random();
 	p_mouse_ = nullptr; //to make the pointer is safe before the snake spots the mouse
-
+	
 }
 Snake::~Snake()
 {}
@@ -23,10 +23,7 @@ bool Snake::is_at_position(int x, int y) {
 bool Snake::has_caught_mouse() {
 	return is_at_position(p_mouse_->x_, p_mouse_->y_);
 }
-void Snake::move_tail()
-{
-	
-}
+
 
 
 void Snake::spot_mouse(Mouse* p_mouse) {
@@ -63,11 +60,14 @@ void Snake::set_direction(int& dx, int& dy)
 
 void Snake::update_position(int dx, int dy) {
 
-	tail_.at(1).y_ = tail_.at(0).y_;
-	tail_.at(1).x_ = tail_.at(0).y_;
+	tail_.at(2).get_x = tail_.at(1).get_x;
+	tail_.at(2).get_y = tail_.at(1).get_y;
+
+	tail_.at(1).get_x = tail_.at(0).get_x;
+	tail_.at(1).get_y = tail_.at(0).get_y;
 	
-	tail_.at(0).x_ = x_;
-	tail_.at(0).y_ = y_;
+	tail_.at(0).get_x = x_;
+	tail_.at(0).get_y = y_;
 		 
 	x_ += dx;
 	y_ += dy;
@@ -81,10 +81,10 @@ RandomNumberGenerator Snake::rng_;
 void Snake::position_at_random() {
 	x_ = rng_.get_random_value(SIZE);        //WARNING: may fall on mouse
 	y_ = rng_.get_random_value(SIZE);
-	for(int i = 0; i < Maxtails; i++)
+	for(int i = 0; i < 3; i++)
 	{
-		tail_.at(i).x_ = x_;
-		tail_.at(i).y_ = y_;
+		tail_.at(i).get_x = x_;
+		tail_.at(i).get_y = y_;
 	}
 
 	

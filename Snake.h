@@ -7,7 +7,6 @@
 #include "RandomNumberGenerator.h"
 #include"constants.h"
 #include "Tail_Item.h"
-
 class Snake {
 public:
 
@@ -20,7 +19,9 @@ public:
 	void position_at_random();
 	void update_position(int dx, int dy);
 	char symbol_;
-	void move_tail();
+	
+	
+
 	vector <Tail_Item> tail_;
 
 	

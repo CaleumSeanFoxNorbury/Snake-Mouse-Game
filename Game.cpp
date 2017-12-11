@@ -51,7 +51,7 @@ void Game::run() {
 			{
 				mouse_.scamper(key_);
 				snake_.chase_mouse();
-				snake_.move_tail();
+				
 				p_ui->draw_grid_on_screen(prepare_grid());
 				cout << "Player: " << _player.get_name() << endl;
 				cout << "Score: " << _player.get_score_amount() << endl;
@@ -85,32 +85,50 @@ string Game::prepare_grid() {
 			
 			if ((row == snake_.y_) && (col == snake_.x_))
 				os << snake_.symbol_;			//show snake
+			else {
+
+				if ((row == snake_.tail_.at(0).get_y) && (col == snake_.tail_.at(0).get_x))
+				{
+					os << snake_.tail_.at(0).get_symbol();
+				}
 				else
 				{
-					if ((row == snake_.tail_.at(0).y_) && (col == snake_.tail_.at(0).x_))
+
+					if ((row == snake_.tail_.at(1).get_y) && (col == snake_.tail_.at(1).get_x))
 					{
-						os << snake_.tail_.at(0).get_symbol();
+						os << snake_.tail_.at(1).get_symbol();
 					}
-					else {
-						if ((row == mouse_.y_) && (col == mouse_.x_))
+					else
+					{
+
+						if ((row == snake_.tail_.at(2).get_y) && (col == snake_.tail_.at(2).get_x))
 						{
-							os << mouse_.symbol_;
+							os << snake_.tail_.at(2).get_symbol();
 						}
 						else
 						{
-							if ((row == _nut.get_y() && col == _nut.get_x()) && !_nut.has_been_collected())
-								os << _nut.get_symbol();
+
+							if ((row == mouse_.y_) && (col == mouse_.x_))
+							{
+								os << mouse_.symbol_;
+							}
 							else
 							{
-								const int hole_no(find_hole_number_at_position(col, row));
-								if (hole_no != -1)
-									os << underground_.get_hole_no(hole_no).get_symbol();	//show hole
+								if ((row == _nut.get_y() && col == _nut.get_x()) && !_nut.has_been_collected())
+									os << _nut.get_symbol();
 								else
-									os << FREECELL;	//show free grid cell
+								{
+									const int hole_no(find_hole_number_at_position(col, row));
+									if (hole_no != -1)
+										os << underground_.get_hole_no(hole_no).get_symbol();	//show hole
+									else
+										os << FREECELL;	//show free grid cell
+								}
 							}
 						}
 					}
 				}
+			}
 		} //end of col-loop
 		os << endl;
 	} //end of row-loop

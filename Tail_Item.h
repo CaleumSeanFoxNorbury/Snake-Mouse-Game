@@ -3,21 +3,20 @@ class Tail_Item
 {
 public:
 	Tail_Item();
+	Tail_Item(int x, int y);
 	~Tail_Item();
-
-	int x_;
-	int y_;
 
 	int get_x;
 	int get_y;
 	char symbol_;
 	
-	bool is_at_position(int x, int y);
+	void move_tail() ;
+		
 	char get_symbol() const;
 
 private:
 		
-		
-		
+	int x_;
+	int y_;	
 };
 
