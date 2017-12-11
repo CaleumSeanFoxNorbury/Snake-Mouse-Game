@@ -72,8 +72,8 @@ void Game::run() {
 		//TODO: Reset state of game
 
 	} while (tolower(carryOn) == 'y');
-
 }
+
 string Game::prepare_grid() {
 	//prepare a string that holds the grid information
 	ostringstream os;
