@@ -1,9 +1,9 @@
 #include "Player.h"
 
 Player::Player() {}
-Player::Player(const string name)
+Player::Player(const string name):_name(name)
 {
-	_name = name;
+	
 }
 
 string Player::get_name() const
