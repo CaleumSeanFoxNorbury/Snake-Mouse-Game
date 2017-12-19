@@ -18,8 +18,7 @@ public:
 	char get_symbol() const;
 	bool is_at_position(int x, int y);
 private:
-	static const int MAXHOLES; //number of holes in underground
-							   //data members
+	static const int MAXHOLES; //number of holes in underground						   
 	char symbol_;
 	int x_, y_;
 };

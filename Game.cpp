@@ -108,9 +108,9 @@ string Game::prepare_grid() {
 						else
 						{
 
-							if ((row == mouse_.y_) && (col == mouse_.x_))
+							if ((row == mouse_.get_y()) && (col == mouse_.get_x()))
 							{
-								os << mouse_.symbol_;
+								os << mouse_.get_symbol();
 							}
 							else
 							{

@@ -30,10 +30,13 @@ class Mouse {
 		void escape_into_hole();
 		void scamper(char k);
 		void reset();
-		char symbol_;
-		int  x_, y_;
+		
+		
 	private:
 		//data members
+		
+		char symbol_;
+		int  x_, y_;
 		bool alive_;
 		bool escaped_;
 		int mouse_dx_;
