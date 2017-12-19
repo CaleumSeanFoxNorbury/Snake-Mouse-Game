@@ -58,6 +58,21 @@ void Snake::set_direction(int& dx, int& dy)
 			dy = -1;                     //snake should move up
 }
 
+int Snake::get_x()
+{
+	return x_;
+}
+
+int Snake::get_y()
+{
+	return y_;
+}
+
+char Snake::get_symbol()
+{
+	return symbol_;
+}
+
 void Snake::update_position(int dx, int dy) {
 
 	tail_.at(2).get_x = tail_.at(1).get_x;
@@ -70,10 +85,7 @@ void Snake::update_position(int dx, int dy) {
 	tail_.at(0).get_y = y_;
 		 
 	x_ += dx;
-	y_ += dy;
-	
-
-	
+	y_ += dy;	
 }
 
 RandomNumberGenerator Snake::rng_;
@@ -86,7 +98,4 @@ void Snake::position_at_random() {
 		tail_.at(i).get_x = x_;
 		tail_.at(i).get_y = y_;
 	}
-
-	
-
 }

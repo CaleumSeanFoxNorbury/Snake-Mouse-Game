@@ -13,26 +13,29 @@ public:
 	Snake();
 	~Snake();
 	bool has_caught_mouse() ;
+	int get_x();
+	int get_y();
+	char get_symbol();
+	void chase_mouse();	
+	void position_at_random();	
 	void spot_mouse(Mouse* p_mouse);
-	void chase_mouse();
-	void set_direction(int& dx, int& dy);
-	void position_at_random();
-	void update_position(int dx, int dy);
-	char symbol_;
 	
 	
 
 	vector <Tail_Item> tail_;
 
 	
-	int x_, y_;
+	
 	Mouse* p_mouse_;
 	static RandomNumberGenerator rng_;
 
 private:
-
+	char symbol_;
 	bool is_at_position(int x, int y);
-	char tail_symbol;
+	void set_direction(int& dx, int& dy);
+	int x_, y_;
+	void update_position(int dx, int dy);
+
 
 };
 

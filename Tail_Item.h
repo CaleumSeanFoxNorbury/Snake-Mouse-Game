@@ -7,15 +7,11 @@ public:
 	~Tail_Item();
 
 	int get_x;
-	int get_y;
-	char symbol_;
-	
-	void move_tail() ;
-		
+	int get_y;	
 	char get_symbol() const;
 
 private:
-		
+	char symbol_;
 	int x_;
 	int y_;	
 };

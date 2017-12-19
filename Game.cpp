@@ -83,8 +83,8 @@ string Game::prepare_grid() {
 		for (int col(1); col <= SIZE; ++col)	//for each column (horizontally)
 		{
 			
-			if ((row == snake_.y_) && (col == snake_.x_))
-				os << snake_.symbol_;			//show snake
+			if ((row == snake_.get_y()) && (col == snake_.get_x()))
+				os << snake_.get_symbol();			//show snake
 			else {
 
 				if ((row == snake_.tail_.at(0).get_y) && (col == snake_.tail_.at(0).get_x))
