@@ -17,24 +17,26 @@ class Game
 {
 public:
 	Game();
+	void set_up(UserInterface* pui);
+	void reset();
+	void run();
+	
+	
+
+private:
+	Player _player;
+	string prepare_grid();
 	Mouse mouse_;
 	Snake snake_;
 	Underground underground_;
 	UserInterface* p_ui;
 	Nut _nut;
-	void set_up(UserInterface* pui);
-	void reset();
-	void run();
+	string prepare_end_message();
+	int key_;
+	void apply_rules();
 	bool is_arrow_key_code(int keycode);
 	int find_hole_number_at_position(int x, int y);
 	bool has_ended(char key);
-
-private:
-	Player _player;
-	string prepare_grid();
-	int key_;
-	void apply_rules();
-	string prepare_end_message();
 };
 
 #endif
