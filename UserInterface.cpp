@@ -25,3 +25,10 @@ void UserInterface::hold_window() {
 	cout << "\n\n";
 	system("pause");
 }
+
+string UserInterface::Get_Name() {
+	string name;
+	cout << "Enter your name: ";
+	cin >> name;
+	return name;
+}

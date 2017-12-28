@@ -29,15 +29,10 @@ void Game::reset()
 void Game::run() {
 	assert(p_ui != nullptr);
 
-	string name;
-	cout << "Enter your name: ";
-	cin >> name;
-
-	_player = Player(name);
-
+	_player = Player(p_ui->Get_Name());
 
 	char carryOn;
-
+	 
 	do
 	{
 		p_ui->draw_grid_on_screen(prepare_grid());
