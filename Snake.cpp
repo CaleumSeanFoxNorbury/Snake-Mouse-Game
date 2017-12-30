@@ -7,10 +7,9 @@
 #include "Snake.h"
 #include"Tail_Item.h"
 static const int Maxtails(3);
-Snake::Snake(): tail_(3) {
-	symbol_ = SNAKEHEAD;
+Snake::Snake(): tail_(3), symbol_(SNAKEHEAD), p_mouse_(nullptr){
+	 
 	position_at_random();
-	p_mouse_ = nullptr; //to make the pointer is safe before the snake spots the mouse
 	
 }
 Snake::~Snake()

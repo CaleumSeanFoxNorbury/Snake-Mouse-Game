@@ -37,6 +37,7 @@ private:
 	bool is_arrow_key_code(int keycode);
 	int find_hole_number_at_position(int x, int y);
 	bool has_ended(char key);
+	bool tail_position(int const row, int const col);
 };
 
 #endif

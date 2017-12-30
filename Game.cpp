@@ -30,7 +30,7 @@ void Game::run() {
 	assert(p_ui != nullptr);
 
 	_player = Player(p_ui->Get_Name());
-
+	
 	char carryOn;
 	 
 	do
@@ -81,49 +81,32 @@ string Game::prepare_grid() {
 			if ((row == snake_.get_y()) && (col == snake_.get_x()))
 				os << snake_.get_symbol();			//show snake
 			else {
-
-				if ((row == snake_.tail_.at(0).get_y) && (col == snake_.tail_.at(0).get_x))
+				if (tail_position(row, col))
 				{
 					os << snake_.tail_.at(0).get_symbol();
 				}
-				else
-				{
-
-					if ((row == snake_.tail_.at(1).get_y) && (col == snake_.tail_.at(1).get_x))
+				else {
+					if ((row == mouse_.get_y()) && (col == mouse_.get_x()))
 					{
-						os << snake_.tail_.at(1).get_symbol();
+						os << mouse_.get_symbol();
 					}
 					else
 					{
-
-						if ((row == snake_.tail_.at(2).get_y) && (col == snake_.tail_.at(2).get_x))
-						{
-							os << snake_.tail_.at(2).get_symbol();
-						}
+						if ((row == _nut.get_y() && col == _nut.get_x()) && !_nut.has_been_collected())
+							os << _nut.get_symbol();
 						else
 						{
-
-							if ((row == mouse_.get_y()) && (col == mouse_.get_x()))
-							{
-								os << mouse_.get_symbol();
-							}
+							const int hole_no(find_hole_number_at_position(col, row));
+							if (hole_no != -1)
+								os << underground_.get_hole_no(hole_no).get_symbol();	//show hole
 							else
-							{
-								if ((row == _nut.get_y() && col == _nut.get_x()) && !_nut.has_been_collected())
-									os << _nut.get_symbol();
-								else
-								{
-									const int hole_no(find_hole_number_at_position(col, row));
-									if (hole_no != -1)
-										os << underground_.get_hole_no(hole_no).get_symbol();	//show hole
-									else
-										os << FREECELL;	//show free grid cell
-								}
-							}
+								os << FREECELL;	//show free grid cell
 						}
 					}
 				}
 			}
+				
+			
 		} //end of col-loop
 		os << endl;
 	} //end of row-loop
@@ -172,4 +155,17 @@ string Game::prepare_end_message() {
 		else
 			os << "\n\nEND OF GAME: THE PLAYER ENDED THE GAME!";
 	return os.str();
+}
+
+bool Game::tail_position(int const row, int const col)
+{
+	bool tail_at_pos = false;
+	for (int x(0); x < snake_.tail_.size(); x++)
+	{
+		if ((row == snake_.tail_.at(x).get_y) && (col == snake_.tail_.at(x).get_x))
+		{
+			tail_at_pos = true;
+		}
+	}
+	return tail_at_pos;
 }
