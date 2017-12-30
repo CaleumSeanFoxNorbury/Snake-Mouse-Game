@@ -19,13 +19,7 @@ public:
 	void chase_mouse();	
 	void position_at_random();	
 	void spot_mouse(Mouse* p_mouse);
-	
-	
-
 	vector <Tail_Item> tail_;
-
-	
-	
 	Mouse* p_mouse_;
 	static RandomNumberGenerator rng_;
 

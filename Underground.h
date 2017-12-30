@@ -23,7 +23,6 @@ using namespace std;
 
 #include "constants.h"
 
-
 class Underground {
 
 public:

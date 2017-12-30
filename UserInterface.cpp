@@ -21,7 +21,7 @@ void UserInterface::show_results_on_screen(string message) const {
 	cout << message;
 }
 
-void UserInterface::hold_window() {
+void UserInterface::hold_window() const{
 	cout << "\n\n";
 	system("pause");
 }

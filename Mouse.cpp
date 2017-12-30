@@ -17,10 +17,10 @@ Mouse::Mouse(): symbol_(MOUSE), x_(0), y_(0),
 // Public functions
 //////////////////////////////////////////////////////////////////////
 
-int Mouse::get_x() {
+int Mouse::get_x() const {
 	return x_;
 }
-int Mouse::get_y() {
+int Mouse::get_y() const {
 	return y_;
 }
 char Mouse::get_symbol() const {

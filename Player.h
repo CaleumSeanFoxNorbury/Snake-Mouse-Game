@@ -10,7 +10,7 @@ class Player
 {
 public:
 	Player();
-	Player(const string);
+	explicit Player(const string);
 	string get_name() const;
 	int get_score_amount() const;
 	void update_score_amount(const int);
