@@ -19,8 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FixedGridItem.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GridItem.cpp" />
     <ClCompile Include="Hole.cpp" />
+    <ClCompile Include="MoveableGridItem.cpp" />
     <ClCompile Include="Nut.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Score.cpp" />
@@ -34,8 +37,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h" />
+    <ClInclude Include="FixedGridItem.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GridItem.h" />
     <ClInclude Include="Hole.h" />
+    <ClInclude Include="MoveableGridItem.h" />
     <ClInclude Include="Nut.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Score.h" />

@@ -1,21 +1,21 @@
-#pragma once
+#if !defined(NutH)
+#define NutH
+
+#include "FixedGridItem.h"
 
 #include "constants.h"
-class Nut
+class Nut :
+	public FixedGridItem
 {
 public:
-	Nut();
-	Nut(const int, const int);
-	int get_x() const;
-	int get_y() const;
-	char get_symbol() const;
+	
+	Nut(int  x, int  y, char symbol);
 	bool has_been_collected() const;
-	bool is_at_position(const int, const int) const;
+	
 	void disappears();
 	void reappears();
 private:
-	int _x, _y;
-	char _symbol;
+
 	bool _collected;
 };
-
+#endif

@@ -12,6 +12,9 @@
 #include "Nut.h"
 #include "Player.h"
 #include "Tail_Item.h"
+#include "FixedGridItem.h"
+#include "GridItem.h"
+#include "constants.h"
 
 class Game
 {
@@ -30,7 +33,7 @@ private:
 	Snake snake_;
 	Underground underground_;
 	UserInterface* p_ui;
-	Nut _nut;
+   	Nut _nut;
 	string prepare_end_message();
 	int key_;
 	void apply_rules();

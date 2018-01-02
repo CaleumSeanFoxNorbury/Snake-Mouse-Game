@@ -1,7 +1,10 @@
 #include "Game.h"
 
 
-Game::Game() {}
+Game::Game():_nut(8,9,NUT)
+{
+	 
+}
 
 void Game::set_up(UserInterface* pui) {
 	//prepare game
@@ -15,8 +18,9 @@ void Game::set_up(UserInterface* pui) {
 	snake_.spot_mouse(&mouse_);
 	//set up the UserInterface
 	p_ui = pui;
-
-	_nut = Nut(8, 9);
+	
+	
+	
 }
 
 void Game::reset()
@@ -145,6 +149,8 @@ void Game::apply_rules() {
 bool Game::has_ended(char key) {
 	return ((key == 'Q') || (!mouse_.is_alive()) || (mouse_.has_escaped()));
 }
+
+
 string Game::prepare_end_message() {
 	ostringstream os;
 	if (mouse_.has_escaped())
