@@ -7,7 +7,7 @@
 #include "Snake.h"
 #include"Tail_Item.h"
 static const int Maxtails(3);
-Snake::Snake(): tail_(3), symbol_(SNAKEHEAD), p_mouse_(nullptr){
+Snake::Snake(/*int x,int y, char symbol*/):/*MoveableGridItem(x,y,symbol),*/ tail_(3), symbol_(SNAKEHEAD), p_mouse_(nullptr){
 	 
 	position_at_random();
 	

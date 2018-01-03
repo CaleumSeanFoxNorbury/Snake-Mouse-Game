@@ -1,11 +1,11 @@
 #if !defined(NutH)
 #define NutH
 
-#include "FixedGridItem.h"
-
+#include "MoveableGridItem.h"
 #include "constants.h"
+
 class Nut :
-	public FixedGridItem
+	public MoveableGridItem
 {
 public:
 	

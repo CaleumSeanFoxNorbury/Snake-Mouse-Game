@@ -7,27 +7,31 @@
 #include "RandomNumberGenerator.h"
 #include"constants.h"
 #include "Tail_Item.h"
-class Snake {
+#include "MoveableGridItem.h"
+class Snake
+	//public MoveableGridItem
+{
 public:
 
 	Snake();
 	~Snake();
 	bool has_caught_mouse() ;
-	int get_x();
-	int get_y();
-	char get_symbol();
+
 	void chase_mouse();	
 	void position_at_random();	
 	void spot_mouse(Mouse* p_mouse);
 	vector <Tail_Item> tail_;
 	Mouse* p_mouse_;
 	static RandomNumberGenerator rng_;
-
-private:
-	char symbol_;
 	bool is_at_position(int x, int y);
-	void set_direction(int& dx, int& dy);
+	char get_symbol();
+	int get_x();
+	int get_y();
+private:
 	int x_, y_;
+	
+	void set_direction(int& dx, int& dy);
+	char symbol_;
 	void update_position(int dx, int dy);
 
 

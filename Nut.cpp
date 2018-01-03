@@ -1,6 +1,6 @@
 #include "Nut.h"
 
-Nut::Nut(int  x, int  y, char symbol):FixedGridItem(x,y,symbol)
+Nut::Nut(int  x, int  y, char symbol):MoveableGridItem(x,y,symbol)
 {
 
 	_collected = false;
