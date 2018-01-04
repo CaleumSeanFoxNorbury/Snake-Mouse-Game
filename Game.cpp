@@ -1,7 +1,7 @@
 #include "Game.h"
 
 
-Game::Game():_nut(8,9,NUT)
+Game::Game():_nut(8,9,NUT),snake_(SNAKEHEAD),mouse_(MOUSE)
 {
 	 
 }
@@ -14,7 +14,6 @@ void Game::set_up(UserInterface* pui) {
 	underground_.set_hole_no_at_position(2, 7, 15);
 	//mouse state already set up in its contructor
 	//set up snake
-	snake_.position_at_random();
 	snake_.spot_mouse(&mouse_);
 	//set up the UserInterface
 	p_ui = pui;

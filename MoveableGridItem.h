@@ -7,11 +7,14 @@ class MoveableGridItem :
 	public GridItem
 {
 public:
-	MoveableGridItem(int, int, char);
+	MoveableGridItem(int, int, const char);
 	~MoveableGridItem();
 	int get_x();
 	int get_y();
-	bool is_at_position(int, int);
+	void set_xy();
+	
+	bool is_at_position(int, int) const;
+	void update_position(int, int);
 
 private:
 	int _x;

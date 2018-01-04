@@ -8,12 +8,12 @@
 #include"constants.h"
 #include "Tail_Item.h"
 #include "MoveableGridItem.h"
-class Snake
-	//public MoveableGridItem
+class Snake:
+	public MoveableGridItem
 {
 public:
 
-	Snake();
+	Snake(char const);
 	~Snake();
 	bool has_caught_mouse() ;
 
@@ -23,16 +23,12 @@ public:
 	vector <Tail_Item> tail_;
 	Mouse* p_mouse_;
 	static RandomNumberGenerator rng_;
-	bool is_at_position(int x, int y);
-	char get_symbol();
-	int get_x();
-	int get_y();
-private:
-	int x_, y_;
 	
+
+private:
 	void set_direction(int& dx, int& dy);
 	char symbol_;
-	void update_position(int dx, int dy);
+	
 
 
 };

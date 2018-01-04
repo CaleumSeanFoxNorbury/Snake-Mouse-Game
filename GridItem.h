@@ -7,7 +7,7 @@ class GridItem
 {
 public:
 	
-	GridItem(char symbol);
+	GridItem(char const symbol);
 	~GridItem();
 	
 	char get_symbol();

@@ -6,8 +6,7 @@ class FixedGridItem :
 	public GridItem
 {
 public:
-	
-	
+
 	FixedGridItem(int  x, int  y, char symbol);
 	~FixedGridItem();
 
@@ -15,8 +14,8 @@ public:
 	int get_y();
 	bool is_at_position(const int, const int);
 private:
-	int _x;
-	int _y;
-
+	int const _x ;
+	int const _y ;
 };
 #endif
+
