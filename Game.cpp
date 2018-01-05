@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(Player* player):_nut(8,9,NUT),snake_(SNAKEHEAD),mouse_(MOUSE), _player(player)
+Game::Game(Player* player):_nut(8,9,NUT),snake_(SNAKEHEAD),mouse_(MOUSE), _player(player), cheatMode(false)
 {
 	 
 }
@@ -27,29 +27,42 @@ void Game::reset()
 
 void Game::run() {
 	assert(p_ui != nullptr);
-		p_ui->draw_grid_on_screen(prepare_grid());
-		cout << "Player: " << _player->get_name() << endl;
-		cout << "Score: " << to_string(_player->get_score_amount()) << endl;
+	p_ui->draw_grid_on_screen(prepare_grid());
+	cout << "Player: " << _player->get_name() << endl;
+	cout << "Score: " << to_string(_player->get_score_amount()) << endl;
 
-		key_ = p_ui->get_keypress_from_user();
-		while (!has_ended(key_))
+	key_ = p_ui->get_keypress_from_user();
+	while (!has_ended(key_))
+	{
+		if (key_ == 'C')
 		{
-			
-			if (is_arrow_key_code(key_))
-			{
-				mouse_.scamper(key_);
-				snake_.chase_mouse();
-				
-				p_ui->draw_grid_on_screen(prepare_grid());
-				cout << "Player: " << _player->get_name() << endl;
-				cout << "Score: " << to_string(_player->get_score_amount()) << endl;
-				apply_rules();
-			}
-
-			key_ = p_ui->get_keypress_from_user();
+			cheatModeUsed = true;
+			toggle_cheat_mode();
 		}
 
-		p_ui->show_results_on_screen(prepare_end_message());
+		if (is_arrow_key_code(key_))
+		{
+			mouse_.scamper(key_);
+
+			if (!cheatMode)
+			{
+				snake_.chase_mouse();
+			}
+				
+			p_ui->draw_grid_on_screen(prepare_grid());
+			if (cheatMode)
+			{
+				cout << "CHEAT MODE ACTIVATED" << endl;
+			}
+			cout << "Player: " << _player->get_name() << endl;
+			cout << "Score: " << to_string(_player->get_score_amount()) << endl;
+			apply_rules();
+		}
+
+		key_ = p_ui->get_keypress_from_user();
+	}
+
+	p_ui->show_results_on_screen(prepare_end_message());
 }
 
 string Game::prepare_grid() {
@@ -108,7 +121,10 @@ void Game::apply_rules() {
 	if (snake_.has_caught_mouse())
 	{
 		mouse_.die();
-		_player->update_score_amount(-1);
+		if (!cheatModeUsed)
+		{
+			_player->update_score_amount(-1);
+		}
 	}
 	
 	else
@@ -121,7 +137,10 @@ void Game::apply_rules() {
 		if (mouse_.has_reached_a_hole(underground_) && _nut.has_been_collected())
 		{
 			mouse_.escape_into_hole();
-			_player->update_score_amount(1);
+			if (!cheatModeUsed)
+			{
+				_player->update_score_amount(1);
+			}
 		}
 
 	}
@@ -154,4 +173,9 @@ bool Game::tail_position(int const row, int const col)
 		}
 	}
 	return tail_at_pos;
+}
+
+void Game::toggle_cheat_mode()
+{
+	cheatMode = !cheatMode;
 }
