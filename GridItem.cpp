@@ -8,7 +8,7 @@ GridItem::~GridItem()
 {
 }
 
-char GridItem::get_symbol() const
+char GridItem::get_symbol() 
 {
 	return symbol_;
 }

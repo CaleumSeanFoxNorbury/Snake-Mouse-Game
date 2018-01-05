@@ -1,7 +1,4 @@
-#if !defined(Tail_ItemH)
-#define Tail_ItemH
-
-#include "constants.h"
+#pragma once
 class Tail_Item
 {
 public:
@@ -18,5 +15,4 @@ private:
 	int x_;
 	int y_;	
 };
-#endif
 

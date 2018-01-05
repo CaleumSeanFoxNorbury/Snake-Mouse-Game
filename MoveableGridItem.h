@@ -9,8 +9,8 @@ class MoveableGridItem :
 public:
 	MoveableGridItem(int, int, const char);
 	~MoveableGridItem();
-	int get_x() const;
-	int get_y() const;
+	int get_x();
+	int get_y();
 	void set_xy(int, int);
 	
 	bool is_at_position(int, int) const;

@@ -12,12 +12,23 @@
 #include "Nut.h"
 #include "Player.h"
 #include "Tail_Item.h"
+#include "FixedGridItem.h"
+#include "GridItem.h"
 #include "constants.h"
 
 class Game
 {
 public:
-	Game(Player* player);
+	Game();
+	void set_up(UserInterface* pui);
+	void reset();
+	void run();
+	
+	
+
+private:
+	Player _player;
+	string prepare_grid();
 	Mouse mouse_;
 	Snake snake_;
 	Underground underground_;
@@ -29,13 +40,6 @@ public:
 	bool is_arrow_key_code(int keycode);
 	int find_hole_number_at_position(int x, int y);
 	bool has_ended(char key);
-
-private:
-	Player* _player;
-	string prepare_grid();
-	int key_;
-	void apply_rules();
-	string prepare_end_message();
 	bool tail_position(int const row, int const col);
 };
 

@@ -9,7 +9,7 @@ class Nut :
 {
 public:
 	
-	Nut(int const  x, int const  y, char const symbol);
+	Nut(int  x, int  y, char symbol);
 	bool has_been_collected() const;
 	
 	void disappears();
