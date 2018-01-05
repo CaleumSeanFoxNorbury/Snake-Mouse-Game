@@ -1,4 +1,5 @@
-#pragma once
+#if !defined(ScoreH)
+#define ScoreH
 class Score
 {
 public:
@@ -8,4 +9,4 @@ public:
 private:
 	int _amount;
 };
-
+#endif

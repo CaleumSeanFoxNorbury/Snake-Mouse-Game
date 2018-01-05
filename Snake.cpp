@@ -10,7 +10,11 @@ static const int Maxtails(3);
 RandomNumberGenerator Snake::rng_;
 Snake::Snake(char const symbol):MoveableGridItem(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE), symbol), tail_(3),p_mouse_(nullptr){
 	 
-	position_at_random();
+	for (int i = 0; i < 3; i++)
+	{
+		tail_.at(i).get_x = get_x();
+		tail_.at(i).get_y = get_y();
+	}
 	
 }
 Snake::~Snake()
@@ -61,10 +65,12 @@ void Snake::set_direction(int& dx, int& dy)
 }
 
 void Snake::position_at_random() {
-
-	for(int i = 0; i < 3; i++)
+	
+	set_xy(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE));
+	for (int i = 0; i < 3; i++)
 	{
 		tail_.at(i).get_x = get_x();
 		tail_.at(i).get_y = get_y();
 	}
+
 }

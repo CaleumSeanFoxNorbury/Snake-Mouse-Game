@@ -11,7 +11,7 @@ public:
 	~MoveableGridItem();
 	int get_x();
 	int get_y();
-	void set_xy();
+	void set_xy(int, int);
 	
 	bool is_at_position(int, int) const;
 	void update_position(int, int);

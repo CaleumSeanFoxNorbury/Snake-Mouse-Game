@@ -74,10 +74,9 @@ void Mouse::scamper(char k) { //move mouse in required direction
 }
 
 void Mouse::reset()
-{
-	alive_ = true;
+{	alive_ = true;
 	escaped_ = false;
-	set_xy();
+	set_xy(position_in_middle_of_grid(), position_in_middle_of_grid());
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -3,11 +3,12 @@
 
 #include <cassert>
 #include <vector>
+//#include "FixedGridItem.h"
+#include "constants.h"
 using namespace std;
 
-#include "constants.h"
-
-class Hole {
+class Hole //: public FixedGridItem 
+{
 public:
 	//constructors
 	Hole();

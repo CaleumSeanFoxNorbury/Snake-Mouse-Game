@@ -20,10 +20,10 @@ int  MoveableGridItem::get_y()
 
 }
 
-void MoveableGridItem::set_xy()
+void MoveableGridItem::set_xy(int x, int y)
 {
-	_x = SIZE / 2;
-	_y = SIZE / 2;
+	_x = x;
+	_y = y;
 }
 
 bool MoveableGridItem::is_at_position(int x, int y) const
