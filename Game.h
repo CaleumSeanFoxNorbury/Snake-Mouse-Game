@@ -15,7 +15,7 @@
 class Game
 {
 public:
-	Game();
+	Game(Player* player);
 	Mouse mouse_;
 	Snake snake_;
 	Underground underground_;
@@ -28,7 +28,7 @@ public:
 	bool has_ended(char key);
 
 private:
-	Player _player;
+	Player* _player;
 	string prepare_grid();
 	int key_;
 	void apply_rules();

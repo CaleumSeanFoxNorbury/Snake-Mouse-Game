@@ -1,7 +1,9 @@
 #include "Game.h"
 
 
-Game::Game() {}
+Game::Game(Player* player) {
+	_player = player;
+}
 
 void Game::set_up(UserInterface* pui) {
 	//prepare game
@@ -15,24 +17,11 @@ void Game::set_up(UserInterface* pui) {
 	snake_.spot_mouse(&mouse_);
 	//set up the UserInterface
 	p_ui = pui;
-
 	_nut = Nut(8, 9);
 }
 
 void Game::run() {
 	assert(p_ui != nullptr);
-
-	string name;
-	cout << "Enter your name: ";
-	cin >> name;
-
-	_player = Player(name);
-
-
-	char carryOn;
-
-	do
-	{
 		p_ui->draw_grid_on_screen(prepare_grid());
 		key_ = p_ui->get_keypress_from_user();
 		while (!has_ended(key_))
@@ -43,8 +32,8 @@ void Game::run() {
 				mouse_.scamper(key_);
 				snake_.chase_mouse();
 				p_ui->draw_grid_on_screen(prepare_grid());
-				cout << "Player: " << _player.get_name() << endl;
-				cout << "Score: " << _player.get_score_amount() << endl;
+				cout << "Player: " << _player->get_name() << endl;
+				cout << "Score: " << to_string(_player->get_score_amount()) << endl;
 				apply_rules();
 			}
 
@@ -52,14 +41,6 @@ void Game::run() {
 		}
 
 		p_ui->show_results_on_screen(prepare_end_message());
-
-		cout << endl << "Do you wish to continue? (Y/N): ";
-		cin >> carryOn;
-
-		//TODO: Reset state of game
-
-	} while (tolower(carryOn) != 'n');
-
 }
 string Game::prepare_grid() {
 	//prepare a string that holds the grid information
@@ -102,9 +83,11 @@ void Game::apply_rules() {
 	if (snake_.has_caught_mouse())
 	{
 		mouse_.die();
-		_player.update_score_amount(-1);
+		_player->update_score_amount(-1);
 	}
+	
 	else
+	
 	{
 		if (mouse_.is_at_position(_nut.get_x(), _nut.get_y()))
 		{
@@ -113,7 +96,7 @@ void Game::apply_rules() {
 		if (mouse_.has_reached_a_hole(underground_) && _nut.has_been_collected())
 		{
 			mouse_.escape_into_hole();
-			_player.update_score_amount(1);
+			_player->update_score_amount(1);
 		}
 
 	}

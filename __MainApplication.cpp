@@ -18,10 +18,24 @@ UserInterface ui;
 
 int main()
 {
-	Game game;
 
-	game.set_up(&ui);
-	game.run();
+	string name;
+	cout << "Enter your name: ";
+	cin >> name;
+
+	Player player(name);
+
+	char carry_on;
+
+	do
+	{
+		Game game(&player);
+		game.set_up(&ui);
+		game.run();
+
+		cout << "Play again? (Y/N): ";
+		cin >> carry_on;
+	} while (tolower(carry_on) == 'y');
 
 	ui.hold_window();
 	return 0;
