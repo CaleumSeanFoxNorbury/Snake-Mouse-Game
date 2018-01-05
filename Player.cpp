@@ -1,7 +1,4 @@
 #include "Player.h"
-Player::Player()
-{}
-
 Player::Player(const string name) : _name(name)
 {
 }

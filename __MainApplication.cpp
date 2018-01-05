@@ -35,6 +35,7 @@ int main()
 
 		cout << "Play again? (Y/N): ";
 		cin >> carry_on;
+
 	} while (tolower(carry_on) == 'y');
 
 	ui.hold_window();

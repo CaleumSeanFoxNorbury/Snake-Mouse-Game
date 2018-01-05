@@ -19,7 +19,7 @@
 class Game
 {
 public:
-	Game();
+	Game(Player* player);
 	void set_up(UserInterface* pui);
 	void reset();
 	void run();
@@ -27,7 +27,7 @@ public:
 	
 
 private:
-	Player _player;
+	Player* _player;
 	string prepare_grid();
 	Mouse mouse_;
 	Snake snake_;

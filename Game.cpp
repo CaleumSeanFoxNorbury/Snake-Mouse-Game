@@ -1,11 +1,6 @@
 #include "Game.h"
 
-
-Game::Game(Player* player) {
-	_player = player;
-}
-
-Game::Game():_nut(8,9,NUT),snake_(SNAKEHEAD),mouse_(MOUSE)
+Game::Game(Player* player):_nut(8,9,NUT),snake_(SNAKEHEAD),mouse_(MOUSE), _player(player)
 {
 	 
 }
@@ -21,8 +16,6 @@ void Game::set_up(UserInterface* pui) {
 	snake_.spot_mouse(&mouse_);
 	//set up the UserInterface
 	p_ui = pui;
-
-	_nut = Nut(8, 9);
 }
 
 void Game::reset()
@@ -35,8 +28,9 @@ void Game::reset()
 void Game::run() {
 	assert(p_ui != nullptr);
 		p_ui->draw_grid_on_screen(prepare_grid());
-		cout << "Player: " << _player.get_name() << endl;
-		cout << "Score: " << _player.get_score_amount() << endl;
+		cout << "Player: " << _player->get_name() << endl;
+		cout << "Score: " << to_string(_player->get_score_amount()) << endl;
+
 		key_ = p_ui->get_keypress_from_user();
 		while (!has_ended(key_))
 		{
@@ -56,14 +50,6 @@ void Game::run() {
 		}
 
 		p_ui->show_results_on_screen(prepare_end_message());
-
-		cout << endl << "Do you wish to continue? (Y/N): ";
-		cin >> carryOn;
-
-		//TODO: Reset state of game
-
-	} while (tolower(carryOn) != 'n');
-
 }
 
 string Game::prepare_grid() {
