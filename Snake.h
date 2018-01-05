@@ -13,7 +13,7 @@ class Snake:
 {
 public:
 
-	Snake(char const);
+	explicit Snake(char const);
 	~Snake();
 	bool has_caught_mouse() ;
 

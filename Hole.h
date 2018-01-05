@@ -12,7 +12,7 @@ class Hole //: public FixedGridItem
 public:
 	//constructors
 	Hole();
-	Hole(int x, int y);
+	Hole(int const x, int const y);
 	//assessors
 	int get_x() const;
 	int get_y() const;

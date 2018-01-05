@@ -10,11 +10,11 @@ MoveableGridItem::MoveableGridItem(int x, int y, char symbol): GridItem(symbol),
 MoveableGridItem::~MoveableGridItem()
 {
 }
-int MoveableGridItem::get_x()
+int MoveableGridItem::get_x() const
 {
 	return _x;
 }
-int  MoveableGridItem::get_y()
+int  MoveableGridItem::get_y() const
 {
 	return _y;
 

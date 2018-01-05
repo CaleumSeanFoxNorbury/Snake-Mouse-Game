@@ -7,11 +7,11 @@ class FixedGridItem :
 {
 public:
 
-	FixedGridItem(int  x, int  y, char symbol);
+	FixedGridItem(int const  x, int const  y, char const symbol);
 	~FixedGridItem();
 
-	int get_x();
-	int get_y();
+	int get_x() const;
+	int get_y() const;
 	bool is_at_position(const int, const int);
 private:
 	int const _x ;

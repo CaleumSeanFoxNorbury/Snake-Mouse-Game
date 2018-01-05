@@ -19,7 +19,7 @@ class Mouse:
 {
 	public:
 		//constructor
-		Mouse::Mouse(char const);
+		explicit Mouse(char const);
 		//assessors
 
 		bool is_alive() const;

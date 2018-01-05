@@ -1,4 +1,5 @@
-#pragma once
+#if !defined(PlayerH)
+#define PlayerH
 
 #include <string>
 
@@ -19,3 +20,4 @@ private:
 	Score _score;
 };
 
+#endif

@@ -1,3 +1,5 @@
+
+
 #include "Player.h"
 Player::Player()
 {}
@@ -21,3 +23,4 @@ void Player::update_score_amount(const int amount)
 {
 	_score.update_amount(amount);
 }
+

@@ -10,7 +10,7 @@ public:
 	GridItem(char const symbol);
 	~GridItem();
 	
-	char get_symbol();
+	char get_symbol() const;
 private:
 	char const symbol_;
 };

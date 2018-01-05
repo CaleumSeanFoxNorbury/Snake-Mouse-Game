@@ -9,12 +9,12 @@ FixedGridItem::~FixedGridItem()
 {
 }
 
-int FixedGridItem::get_x()
+int FixedGridItem::get_x() const
 {
 	return _x;
 }
 
-int FixedGridItem::get_y()
+int FixedGridItem::get_y() const
 {
 	return _y;
 }

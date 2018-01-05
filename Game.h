@@ -12,8 +12,6 @@
 #include "Nut.h"
 #include "Player.h"
 #include "Tail_Item.h"
-#include "FixedGridItem.h"
-#include "GridItem.h"
 #include "constants.h"
 
 class Game
@@ -23,8 +21,6 @@ public:
 	void set_up(UserInterface* pui);
 	void reset();
 	void run();
-	
-	
 
 private:
 	Player _player;
