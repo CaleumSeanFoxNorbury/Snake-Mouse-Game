@@ -3,10 +3,8 @@
 
 Hole::Hole()
 {}
-Hole::Hole(int x, int y) {
-	symbol_ = HOLE;
-	x_ = x;
-	y_ = y;
+Hole::Hole(int const x, int const y): x_(x), y_(y), symbol_(HOLE) {
+
 }
 int Hole::get_x() const {
 	return x_;
