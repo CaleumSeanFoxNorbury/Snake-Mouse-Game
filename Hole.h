@@ -3,23 +3,23 @@
 
 #include <cassert>
 #include <vector>
+//#include "FixedGridItem.h"
+#include "constants.h"
 using namespace std;
 
-#include "constants.h"
-
-class Hole {
+class Hole //: public FixedGridItem 
+{
 public:
 	//constructors
 	Hole();
-	Hole(int x, int y);
+	Hole(int const x, int const y);
 	//assessors
-	int get_x();
-	int get_y();
+	int get_x() const;
+	int get_y() const;
 	char get_symbol() const;
 	bool is_at_position(int x, int y);
 private:
-	static const int MAXHOLES; //number of holes in underground
-							   //data members
+	static const int MAXHOLES; //number of holes in underground						   
 	char symbol_;
 	int x_, y_;
 };

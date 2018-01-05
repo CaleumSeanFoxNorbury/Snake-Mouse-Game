@@ -23,8 +23,8 @@ using namespace std;
 
 #include "constants.h"
 
-
 class Underground {
+
 public:
 	Underground();
 	Hole get_hole_no(int no) const;

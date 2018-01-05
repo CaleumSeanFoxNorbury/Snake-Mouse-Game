@@ -1,4 +1,8 @@
+
+
 #include "Player.h"
+Player::Player()
+{}
 
 Player::Player(const string name) : _name(name)
 {
@@ -18,3 +22,4 @@ void Player::update_score_amount(const int amount)
 {
 	_score.update_amount(amount);
 }
+

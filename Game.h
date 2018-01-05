@@ -11,6 +11,8 @@
 #include "UserInterface.h"
 #include "Nut.h"
 #include "Player.h"
+#include "Tail_Item.h"
+#include "constants.h"
 
 class Game
 {
@@ -20,9 +22,10 @@ public:
 	Snake snake_;
 	Underground underground_;
 	UserInterface* p_ui;
-	Nut _nut;
-	void set_up(UserInterface* pui);
-	void run();
+   	Nut _nut;
+	string prepare_end_message();
+	int key_;
+	void apply_rules();
 	bool is_arrow_key_code(int keycode);
 	int find_hole_number_at_position(int x, int y);
 	bool has_ended(char key);
@@ -33,6 +36,7 @@ private:
 	int key_;
 	void apply_rules();
 	string prepare_end_message();
+	bool tail_position(int const row, int const col);
 };
 
 #endif

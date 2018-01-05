@@ -5,22 +5,23 @@
 #include<vector>
 
 #include "Snake.h"
-#include"TailItem.h"
 
-Snake::Snake() {
-	symbol_ = SNAKEHEAD;
-	position_at_random();
-	p_mouse_ = nullptr; //to make the pointer is safe before the snake spots the mouse
+static const int Maxtails(3);
+RandomNumberGenerator Snake::rng_;
+Snake::Snake(char const symbol):MoveableGridItem(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE), symbol), tail_(3),p_mouse_(nullptr){
+	 
+	for (int i = 0; i < 3; i++)
+	{
+		tail_.at(i).get_x = get_x();
+		tail_.at(i).get_y = get_y();
+	}
+	
 }
 Snake::~Snake()
 {}
 
-bool Snake::is_at_position(int x, int y) {
-	return (x_ == x) && (y_ == y);
-}
-
 bool Snake::has_caught_mouse() {
-	return is_at_position(p_mouse_->x_, p_mouse_->y_);
+	return is_at_position(p_mouse_->get_x(), p_mouse_->get_y());
 }
 
 void Snake::spot_mouse(Mouse* p_mouse) {
@@ -33,8 +34,17 @@ void Snake::chase_mouse() {
 	//identify direction of travel
 	set_direction(snake_dx, snake_dy);
 	//go in that direction
+	tail_.at(2).get_x = tail_.at(1).get_x;
+	tail_.at(2).get_y = tail_.at(1).get_y;
+
+	tail_.at(1).get_x = tail_.at(0).get_x;
+	tail_.at(1).get_y = tail_.at(0).get_y;
+
+	tail_.at(0).get_x = get_x();
+	tail_.at(0).get_y = get_y();
 	update_position(snake_dx, snake_dy);
 }
+
 
 void Snake::set_direction(int& dx, int& dy)
 {
@@ -42,27 +52,25 @@ void Snake::set_direction(int& dx, int& dy)
 	//assume snake only move when necessary
 	dx = 0; dy = 0;
 		//update coordinate if necessary
-	if (x_ < p_mouse_->get_x())             //if snake on left of mouse
+	if (get_x() < p_mouse_->get_x())             //if snake on left of mouse
 		dx = 1;                          //snake should move right
 	else                                    //otherwise
-		if (x_ > p_mouse_->get_x())         //if snake on left of mouse
+		if (get_x() > p_mouse_->get_x())         //if snake on left of mouse
 			dx = -1;                     //snake should move left
-	if (y_ < p_mouse_->get_y())             //if snake is above mouse
+	if (get_y() < p_mouse_->get_y())             //if snake is above mouse
 		dy = 1;                          //snake should move down
 	else                                    //otherwise
-		if (y_ > p_mouse_->get_y())         //if snake is below mouse
+		if (get_y() > p_mouse_->get_y())         //if snake is below mouse
 			dy = -1;                     //snake should move up
 }
 
-void Snake::update_position(int dx, int dy) {
-	x_ += dx;
-	y_ += dy;
-}
-
-RandomNumberGenerator Snake::rng_;
-
 void Snake::position_at_random() {
-	x_ = rng_.get_random_value(SIZE);        //WARNING: may fall on mouse
-	y_ = rng_.get_random_value(SIZE);
+	
+	set_xy(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE));
+	for (int i = 0; i < 3; i++)
+	{
+		tail_.at(i).get_x = get_x();
+		tail_.at(i).get_y = get_y();
+	}
 
 }

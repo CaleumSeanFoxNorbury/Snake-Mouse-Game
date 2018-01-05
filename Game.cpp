@@ -5,6 +5,11 @@ Game::Game(Player* player) {
 	_player = player;
 }
 
+Game::Game():_nut(8,9,NUT),snake_(SNAKEHEAD),mouse_(MOUSE)
+{
+	 
+}
+
 void Game::set_up(UserInterface* pui) {
 	//prepare game
 	//set up the holes
@@ -13,16 +18,25 @@ void Game::set_up(UserInterface* pui) {
 	underground_.set_hole_no_at_position(2, 7, 15);
 	//mouse state already set up in its contructor
 	//set up snake
-	snake_.position_at_random();
 	snake_.spot_mouse(&mouse_);
 	//set up the UserInterface
 	p_ui = pui;
+
 	_nut = Nut(8, 9);
+}
+
+void Game::reset()
+{
+	snake_.position_at_random();
+	_nut.reappears();
+	mouse_.reset();
 }
 
 void Game::run() {
 	assert(p_ui != nullptr);
 		p_ui->draw_grid_on_screen(prepare_grid());
+		cout << "Player: " << _player.get_name() << endl;
+		cout << "Score: " << _player.get_score_amount() << endl;
 		key_ = p_ui->get_keypress_from_user();
 		while (!has_ended(key_))
 		{
@@ -31,6 +45,7 @@ void Game::run() {
 			{
 				mouse_.scamper(key_);
 				snake_.chase_mouse();
+				
 				p_ui->draw_grid_on_screen(prepare_grid());
 				cout << "Player: " << _player->get_name() << endl;
 				cout << "Score: " << to_string(_player->get_score_amount()) << endl;
@@ -41,29 +56,53 @@ void Game::run() {
 		}
 
 		p_ui->show_results_on_screen(prepare_end_message());
+
+		cout << endl << "Do you wish to continue? (Y/N): ";
+		cin >> carryOn;
+
+		//TODO: Reset state of game
+
+	} while (tolower(carryOn) != 'n');
+
 }
+
 string Game::prepare_grid() {
 	//prepare a string that holds the grid information
 	ostringstream os;
-	for (int row(1); row <= SIZE; ++row)	//for each row (vertically)
+	for (int row(1); row <= SIZE; ++row)		//for each row (vertically)
 	{
 		for (int col(1); col <= SIZE; ++col)	//for each column (horizontally)
 		{
-			if ((row == snake_.y_) && (col == snake_.x_))
-				os << snake_.symbol_;	//show snake
-			else
-				if ((row == mouse_.get_y()) && (col == mouse_.get_x()))
-					os << mouse_.get_symbol();	//show mouse
-				else
+			
+			if ((row == snake_.get_y()) && (col == snake_.get_x()))
+				os << snake_.get_symbol();			//show snake
+			else {
+				if (tail_position(row, col))
 				{
-					if ((row == _nut.get_y() && col == _nut.get_x()) && !_nut.has_been_collected())
-						os << _nut.get_symbol();
-					const int hole_no(find_hole_number_at_position(col, row));
-					if (hole_no != -1)
-						os << underground_.get_hole_no(hole_no).get_symbol();	//show hole
-					else
-						os << FREECELL;	//show free grid cell
+					os << snake_.tail_.at(0).get_symbol();
 				}
+				else {
+					if ((row == mouse_.get_y()) && (col == mouse_.get_x()))
+					{
+						os << mouse_.get_symbol();
+					}
+					else
+					{
+						if ((row == _nut.get_y() && col == _nut.get_x()) && !_nut.has_been_collected())
+							os << _nut.get_symbol();
+						else
+						{
+							const int hole_no(find_hole_number_at_position(col, row));
+							if (hole_no != -1)
+								os << underground_.get_hole_no(hole_no).get_symbol();	//show hole
+							else
+								os << FREECELL;	//show free grid cell
+						}
+					}
+				}
+			}
+				
+			
 		} //end of col-loop
 		os << endl;
 	} //end of row-loop
@@ -104,6 +143,8 @@ void Game::apply_rules() {
 bool Game::has_ended(char key) {
 	return ((key == 'Q') || (!mouse_.is_alive()) || (mouse_.has_escaped()));
 }
+
+
 string Game::prepare_end_message() {
 	ostringstream os;
 	if (mouse_.has_escaped())
@@ -114,4 +155,17 @@ string Game::prepare_end_message() {
 		else
 			os << "\n\nEND OF GAME: THE PLAYER ENDED THE GAME!";
 	return os.str();
+}
+
+bool Game::tail_position(int const row, int const col)
+{
+	bool tail_at_pos = false;
+	for (int x(0); x < snake_.tail_.size(); x++)
+	{
+		if ((row == snake_.tail_.at(x).get_y) && (col == snake_.tail_.at(x).get_x))
+		{
+			tail_at_pos = true;
+		}
+	}
+	return tail_at_pos;
 }
