@@ -6,8 +6,8 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-
-Mouse::Mouse(char symbol): MoveableGridItem(position_in_middle_of_grid(), position_in_middle_of_grid(), symbol),
+RandomNumberGenerator Mouse::rng_;
+Mouse::Mouse(char symbol): MoveableGridItem(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE), symbol),
                 alive_(true), escaped_(false), 
 				mouse_dx_(0), mouse_dy_(0) {
 	
@@ -73,19 +73,17 @@ void Mouse::scamper(char k) { //move mouse in required direction
 	}
 }
 
+void Mouse::position_at_random()
+{
+	set_xy(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE));
+}
+
 void Mouse::reset()
 {	alive_ = true;
 	escaped_ = false;
-	set_xy(position_in_middle_of_grid(), position_in_middle_of_grid());
+	set_xy(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE));
 }
 
 //////////////////////////////////////////////////////////////////////
 // Private functions
 //////////////////////////////////////////////////////////////////////
-
-
-int Mouse::position_in_middle_of_grid() {
-	int x_;
-	x_ = SIZE /2;
-	return x_;
-}

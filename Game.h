@@ -33,7 +33,7 @@ private:
 	Snake snake_;
 	Underground underground_;
 	UserInterface* p_ui;
-   	Nut _nut;
+   	Nut nut_;
 	string prepare_end_message();
 	int key_;
 	void apply_rules();

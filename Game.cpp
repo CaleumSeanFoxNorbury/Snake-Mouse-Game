@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(Player* player):_nut(8,9,NUT),snake_(SNAKEHEAD),mouse_(MOUSE), _player(player), cheatMode(false)
+Game::Game(Player* player):nut_(8,9,NUT),snake_(SNAKEHEAD),mouse_(MOUSE), _player(player), cheatMode(false)
 {
 	 
 }
@@ -21,7 +21,7 @@ void Game::set_up(UserInterface* pui) {
 void Game::reset()
 {
 	snake_.position_at_random();
-	_nut.reappears();
+	nut_.reappears();
 	mouse_.reset();
 }
 
@@ -87,8 +87,8 @@ string Game::prepare_grid() {
 					}
 					else
 					{
-						if ((row == _nut.get_y() && col == _nut.get_x()) && !_nut.has_been_collected())
-							os << _nut.get_symbol();
+						if ((row == nut_.get_y() && col == nut_.get_x()) && !nut_.has_been_collected())
+							os << nut_.get_symbol();
 						else
 						{
 							const int hole_no(find_hole_number_at_position(col, row));
@@ -130,11 +130,11 @@ void Game::apply_rules() {
 	else
 	
 	{
-		if (mouse_.is_at_position(_nut.get_x(), _nut.get_y()))
+		if (mouse_.is_at_position(nut_.get_x(), nut_.get_y()))
 		{
-			_nut.disappears();
+			nut_.disappears();
 		}
-		if (mouse_.has_reached_a_hole(underground_) && _nut.has_been_collected())
+		if (mouse_.has_reached_a_hole(underground_) && nut_.has_been_collected())
 		{
 			mouse_.escape_into_hole();
 			if (!cheatModeUsed)

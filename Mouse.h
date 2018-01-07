@@ -13,6 +13,7 @@
 #include "constants.h"
 #include "Underground.h"
 #include "MoveableGridItem.h"
+#include "RandomNumberGenerator.h"
 
 class Mouse:
 			public MoveableGridItem
@@ -30,6 +31,8 @@ class Mouse:
 		void escape_into_hole();
 		void scamper(char k);
 		void reset();
+		void position_at_random();
+		static RandomNumberGenerator rng_;
 
 	private:
 		//data members
@@ -37,8 +40,7 @@ class Mouse:
 		bool escaped_;
 		int mouse_dx_;
 		int mouse_dy_; 
-		//supporting functions 
-		int position_in_middle_of_grid();
+		//supporting functions
 
 };
 
