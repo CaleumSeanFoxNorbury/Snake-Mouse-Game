@@ -3,17 +3,20 @@
 
 #include "MoveableGridItem.h"
 #include "constants.h"
+#include "RandomNumberGenerator.h"
 
 class Nut :
 	public MoveableGridItem
 {
 public:
 	
-	Nut(int  x, int  y, char symbol);
+	Nut(char symbol);
 	bool has_been_collected() const;
 	
 	void disappears();
 	void reappears();
+	void position_at_random();
+	static RandomNumberGenerator rng_;
 private:
 
 	bool _collected;

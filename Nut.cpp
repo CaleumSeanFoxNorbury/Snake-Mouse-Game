@@ -1,12 +1,11 @@
 #include "Nut.h"
 
-Nut::Nut(int  x, int  y, char const symbol):MoveableGridItem(x,y,symbol)
+RandomNumberGenerator Nut::rng_;
+Nut::Nut(char const symbol):MoveableGridItem(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE), symbol)
 {
 
 	_collected = false;
 }
-
-
 
 
 
@@ -26,3 +25,9 @@ void Nut::reappears()
 {
 	_collected = false;
 }
+
+void Nut::position_at_random()
+{
+	set_xy(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE));
+}
+

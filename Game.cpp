@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(Player* player):nut_(8,9,NUT),snake_(SNAKEHEAD),mouse_(MOUSE), _player(player), cheatMode(false)
+Game::Game(Player* player):nut_(NUT),snake_(SNAKEHEAD),mouse_(MOUSE), _player(player), cheatMode(false)
 {
 	 
 }
