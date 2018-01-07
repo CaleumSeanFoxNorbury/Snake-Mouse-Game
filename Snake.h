@@ -3,6 +3,7 @@
 #if !defined(SnakeH)
 #define SnakeH
 
+#include<vector>
 #include "Mouse.h"
 #include "RandomNumberGenerator.h"
 #include "constants.h"

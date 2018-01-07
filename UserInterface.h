@@ -13,6 +13,7 @@
 //include standard libraries
 #include <iostream>		//for output and input: cout << and cin >>
 #include <string>		//for string
+#include <conio.h>		//for _getch()
 using namespace std;
 
 class UserInterface {

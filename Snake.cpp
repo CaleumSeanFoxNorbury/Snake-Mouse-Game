@@ -2,10 +2,8 @@
 ////////////////////////////////////////////////////////////////////// 
 
 //////////////////////////////////////////////////////////////////////
-#include<vector>
 
 #include "Snake.h"
-#include"Tail_Item.h"
 static const int Maxtails(3);
 RandomNumberGenerator Snake::rng_;
 Snake::Snake(char const symbol):MoveableGridItem(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE), symbol), tail_(3),p_mouse_(nullptr){
