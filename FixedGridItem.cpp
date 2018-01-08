@@ -1,5 +1,8 @@
 #include "FixedGridItem.h"
 
+FixedGridItem::FixedGridItem() : GridItem(' '), _x(0), _y(0)
+{
+}
 
 FixedGridItem::FixedGridItem(int  x, int  y, char symbol):GridItem(symbol), _x(x), _y(y)
 {

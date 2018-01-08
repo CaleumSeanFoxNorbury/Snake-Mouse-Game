@@ -11,6 +11,7 @@ class FixedGridItem :
 {
 public:
 	//constructors
+	FixedGridItem();
 	FixedGridItem(int  x, int  y, char symbol);
 	~FixedGridItem();
 	//assessors

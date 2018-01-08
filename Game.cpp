@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(Player* player):nut_(NUT),snake_(SNAKEHEAD),mouse_(MOUSE), _player(player), cheatMode(false)
+Game::Game(Player* player):nut_(NUT),snake_(SNAKEHEAD),mouse_(MOUSE), _player(player), cheatMode(false) 
 {
 	 
 }
@@ -8,9 +8,9 @@ Game::Game(Player* player):nut_(NUT),snake_(SNAKEHEAD),mouse_(MOUSE), _player(pl
 void Game::set_up(UserInterface* pui) {
 	//prepare game
 	//set up the holes
-	underground_.set_hole_no_at_position(0, 4, 3);
-	underground_.set_hole_no_at_position(1, 15, 10);
-	underground_.set_hole_no_at_position(2, 7, 15);
+	//underground_.set_hole_no_at_position(0, 4, 3);
+	//underground_.set_hole_no_at_position(1, 15, 10);
+	//underground_.set_hole_no_at_position(2, 7, 15);
 	//mouse state already set up in its contructor
 	//set up snake
 	snake_.spot_mouse(&mouse_);
@@ -118,7 +118,7 @@ bool Game::is_arrow_key_code(int keycode) {
 	return (keycode == LEFT) || (keycode == RIGHT) || (keycode == UP) || (keycode == DOWN);
 }
 int Game::find_hole_number_at_position(int x, int y) {
-	for (int h_no(0); h_no < underground_.holes_.size(); ++h_no)
+	for (int h_no(0); h_no < 3; ++h_no)
 		if (underground_.get_hole_no(h_no).is_at_position(x, y))
 			return h_no;		//number of the hole
 	return -1;				//not a hole
