@@ -27,6 +27,20 @@ void Game::reset()
 
 void Game::run() {
 	assert(p_ui != nullptr);
+
+	//Mouse, Nut, Snake collsion check
+
+	while(mouse_.is_at_position(snake_.get_x(), snake_.get_y()) == true)
+	{
+		mouse_.position_at_random();
+	}
+
+	while ((nut_.is_at_position(snake_.get_x(), snake_.get_y()) == true) || (nut_.is_at_position(mouse_.get_x(), mouse_.get_y())))
+	{
+		nut_.position_at_random();
+	}
+
+
 	p_ui->draw_grid_on_screen(prepare_grid());
 	cout << "Player: " << _player->get_name() << endl;
 	cout << "Score: " << to_string(_player->get_score_amount()) << endl;
