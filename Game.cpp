@@ -18,18 +18,10 @@ void Game::set_up(UserInterface* pui) {
 	p_ui = pui;
 }
 
-void Game::reset()
-{
-	snake_.position_at_random();
-	nut_.reappears();
-	mouse_.reset();
-}
-
 void Game::run() {
 	assert(p_ui != nullptr);
 
 	//Mouse, Nut, Snake collsion check
-
 	while(mouse_.is_at_position(snake_.get_x(), snake_.get_y()) == true)
 	{
 		mouse_.position_at_random();

@@ -1,3 +1,5 @@
+// Game.h: UserInterface for the Game class
+//////////////////////////////////////////////////////////////////////
 #if !defined(GameH)
 #define GameH
 
@@ -19,14 +21,15 @@
 class Game
 {
 public:
+	//constructor
 	Game(Player* player);
+	//assessors
 	void set_up(UserInterface* pui);
-	void reset();
+	//mutators
 	void run();
 	
-	
-
 private:
+	//data members
 	Player* _player;
 	string prepare_grid();
 	Mouse mouse_;
@@ -36,13 +39,15 @@ private:
    	Nut nut_;
 	string prepare_end_message();
 	int key_;
+	bool cheatMode, cheatModeUsed;
+	//supporting functions
 	void apply_rules();
 	void toggle_cheat_mode();
 	bool is_arrow_key_code(int keycode);
 	int find_hole_number_at_position(int x, int y);
 	bool has_ended(char key);
 	bool tail_position(int const row, int const col);
-	bool cheatMode, cheatModeUsed;
+
 };
 
-#endif
+#endif // !defined(GameH)

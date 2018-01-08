@@ -81,7 +81,7 @@ void Mouse::position_at_random()
 void Mouse::reset()
 {	alive_ = true;
 	escaped_ = false;
-	set_xy(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE));
+	position_at_random();
 }
 
 //////////////////////////////////////////////////////////////////////
